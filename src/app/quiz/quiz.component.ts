@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 
 @Component({
+
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
@@ -60,8 +61,9 @@ export class QuizComponent implements OnInit {
       }
       this._router.navigate(['/result'], 
       { queryParams: 
-        [{ marksOutOf: this.marksOutOf}, { marksObtained: this.marksObtained}] }
+        { marksOutOf: this.marksOutOf, marksObtained: this.marksObtained} }
       );
+
       console.log('Quiz.marksOutOf = ' + this.marksOutOf)
       console.log('Quiz.marksObtained = ' + this.marksObtained)
 

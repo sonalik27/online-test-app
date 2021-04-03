@@ -10,28 +10,24 @@ import { Router } from '@angular/router';
 })
 export class ResultComponent implements OnInit {
 
-  marksOutOf: number = 10;
-  marksObtained: number = 8;
+  marksOutOf: string;
+  marksObtained: string;
 
-  constructor(private _route: ActivatedRoute) {}
+  constructor(private _route: ActivatedRoute, private _router : Router) {}
 
   ngOnInit() {
-      this._route.params.subscribe(
-        (params) => { 
-            // this.marksOutOf = params['marksOutOf'];
-            // this.marksObtained = params['marksObtained'];           
+    this._route.queryParamMap.subscribe(
+        (queryParamMap) => { 
+            console.log(queryParamMap);
+            queryParamMap.get
+            this.marksOutOf = queryParamMap.get('marksOutOf');
+            this.marksObtained = queryParamMap.get('marksObtained');           
           }
       );
+  
       console.log('this.marksOutOf = ' + this.marksOutOf)
       console.log('this.marksObtained = ' + this.marksObtained)
   }
 
-  
-// restartTest(){
-//   this._router.navigate(['/result'], 
-//       { queryParams: 
-//         [{ marksOutOf: this.marksOutOf}, { marksObtained: this.marksObtained}] }
-//       );
-// }
 }
 
